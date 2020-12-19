@@ -1,0 +1,31 @@
+﻿@model EStore.Entities.Product
+
+
+<div class="col-md-4">
+    <div class="product-item">
+        <div class="product-title">
+            <a asp-controller="EStore" asp-action="Details" asp-route-id="@Model.Id">@Model.Name</a>
+            <div class="ratting">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+        </div>
+        <div class="product-image">
+            <a href="product-detail.html">
+                <img src="~/img/@Model.ImageUrl" alt="@Model.Name">
+            </a>
+            <div class="product-action">
+                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                <a href="#"><i class="fa fa-heart"></i></a>
+                <a href="#"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+        <div class="product-price">
+            <h3><span>TL</span>@Model.Price</h3>
+            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Hemen Al !</a>
+        </div>
+    </div>
+</div>

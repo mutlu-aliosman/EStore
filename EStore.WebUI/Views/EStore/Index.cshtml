@@ -1,0 +1,185 @@
+﻿@model ProductListModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Main Slider Start -->
+<div class="header">
+    <div class="container-fluid">
+        <div class="row">
+            @await Component.InvokeAsync("CategoryList")
+            <div class="col-md-6">
+                <div class="header-slider normal-slider">
+                    <div class="header-slider-item">
+                        <img src="/img/slider-1.jpg" alt="Slider Image" />
+                        <div class="header-slider-caption">
+                            
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Hemen Al !</a>
+                        </div>
+                    </div>
+                    <div class="header-slider-item">
+                        <img src="/img/slider-2.jpg" alt="Slider Image" />
+                        <div class="header-slider-caption">
+                           
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Hemen Al !</a>
+                        </div>
+                    </div>
+                    <div class="header-slider-item">
+                        <img src="/img/slider-3.jpg" alt="Slider Image" />
+                        <div class="header-slider-caption">
+                            
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Hemen Al !</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="header-img">
+                    <div class="img-item">
+                        <img src="/img/category-1.jpg" />
+                        <a class="img-text" href="">
+                          
+                        </a>
+                    </div>
+                    <div class="img-item">
+                        <img src="/img/category-2.jpg" />
+                        <a class="img-text" href="">
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Slider End -->
+<!-- Brand Start -->
+<div class="brand">
+    <div class="container-fluid">
+        <div class="brand-slider">
+            <div class="brand-item"><img src="/img/brand-1.png" alt=""></div>
+            <div class="brand-item"><img src="/img/brand-2.png" alt=""></div>
+            <div class="brand-item"><img src="/img/brand-3.png" alt=""></div>
+            <div class="brand-item"><img src="/img/brand-4.png" alt=""></div>
+            <div class="brand-item"><img src="/img/brand-5.png" alt=""></div>
+            <div class="brand-item"><img src="/img/brand-6.png" alt=""></div>
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+<!-- Feature Start-->
+<div class="feature">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fab fa-cc-mastercard"></i>
+                    <h2>Güvenli Ödeme</h2>
+                    <p>
+                        
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-truck"></i>
+                    <h2>Dünya Geneli Teslimat</h2>
+                    <p>
+                       
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-sync-alt"></i>
+                    <h2>90 Gün İçinde Aide </h2>
+                    <p>
+                       
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-comments"></i>
+                    <h2>24/7 Destek</h2>
+                    <p>
+                       
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature End-->
+<!-- Category Start-->
+<div class="category">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="category-item ch-400">
+                    <img src="/img/category-3.jpg" />
+                    <a class="category-name" href="">
+                       
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="category-item ch-250">
+                    <img src="/img/category-4.jpg" />
+                    <a class="category-name" href="">
+                        
+                    </a>
+                </div>
+                <div class="category-item ch-150">
+                    <img src="/img/category-5.jpg" />
+                    <a class="category-name" href="">
+                      
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="category-item ch-150">
+                    <img src="/img/category-6.jpg" />
+                    <a class="category-name" href="">
+                        
+                    </a>
+                </div>
+                <div class="category-item ch-250">
+                    <img src="/img/category-7.jpg" />
+                    <a class="category-name" href="">
+                       
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="category-item ch-400">
+                    <img src="/img/category-8.jpg" />
+                    <a class="category-name" href="">
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Category End-->
+
+<div class="product-view">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    @foreach (var product in Model.Products)
+                    {
+                        <partial name="_product" for="@product" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

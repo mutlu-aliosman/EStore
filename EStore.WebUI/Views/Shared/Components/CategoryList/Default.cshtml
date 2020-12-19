@@ -1,0 +1,17 @@
+﻿@model CategoryListViewModel
+
+<div class="col-md-3">
+    <nav class="navbar bg-light">
+        <ul class="navbar-nav">
+            @foreach (var item in Model.Categories)
+            {
+                <li class="nav-item">
+                    
+                    <a asp-controller="Estore" asp-action="Urunler" asp-route-category="@item.Name.ToLower()"
+                       class="nav-link @(Model.SelectedCategory==item.Name.ToLower()?"active":"")">@item.Name</a>
+                </li>
+            }
+
+        </ul>
+    </nav>
+</div>

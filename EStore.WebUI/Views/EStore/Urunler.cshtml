@@ -1,0 +1,22 @@
+﻿@model EStore.WebUI.Models.ProductListModel
+@{
+    ViewData["Title"] = "Urunler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="product-view">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        @foreach (var product in Model.Products)
+                        {
+                            <partial name="_product" for="@product" />
+                        }
+                    </div>
+                </div>
+                <partial name="_slidebar" />
+            </div>
+        </div>
+    </div>
+
