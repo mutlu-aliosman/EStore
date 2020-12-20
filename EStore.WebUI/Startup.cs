@@ -53,7 +53,10 @@ namespace EStore.WebUI
                     defaults:new {controller="EStore",action="Urunler"}
                     );
 
-                
+                routes.MapRoute(
+                name: "areas",
+                template: "{controller=Home}/{action=Index}/{id?}"
+                          );
             });
 
         }

@@ -15,4 +15,9 @@
     <ProjectReference Include="..\EStore.Business\EStore.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\AdminPage\Data\" />
+    <Folder Include="Areas\AdminPage\Models\" />
+  </ItemGroup>
+
 </Project>
