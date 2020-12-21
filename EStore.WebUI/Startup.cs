@@ -43,6 +43,19 @@ namespace EStore.WebUI
             app.UseMvc(routes =>
             {
                     routes.MapRoute(
+                    name: "AdminProducts",
+                    template: "Admin/Products",
+                    defaults: new {controller="Admin",action="Index"}
+                   );
+
+                routes.MapRoute(
+                   name: "AdminProducts",
+                   template: "Admin/Products/{id?}",
+                   defaults: new { controller = "Admin", action = "ProductEdit" }
+                  );
+
+
+                routes.MapRoute(
                     name: "default",
                      template: "{controller=EStore}/{action=Index}/{id?}"
                     );

@@ -1,8 +1,51 @@
-﻿
+﻿@model ProductListModel
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Eklenen Ürünler</h1>
+<hr />
 
+@if (Model.Products.Count() > 0)
+{
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td style="width:30px;">No</td>
+                <td style="width:100px;">Resim</td>
+                <td>Adı</td>
+                <td style="width:12px;">Fiyatı</td>
+                <td style="width:150px;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <img src="~/img/@item.ImageUrl" width="80" />
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm mr-2" href="/admin/products/@item.Id">Düzenle</a>
+                        <form action="/Admin/ProductDelete" method="post" style="display:inline;">
+                            <input type="hidden" name="ProductId" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        <h4>Eklenen Ürün Yok</h4>
+    </div>
+}
