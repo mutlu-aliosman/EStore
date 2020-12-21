@@ -45,13 +45,18 @@ namespace EStore.WebUI
                     routes.MapRoute(
                     name: "AdminProducts",
                     template: "Admin/Products",
-                    defaults: new {controller="Admin",action="Index"}
+                    defaults: new {controller="Admin",action= "ListProducts" }
                    );
+                routes.MapRoute(
+                 name: "AdminProducts",
+                 template: "Admin/Index",
+                 defaults: new { controller = "Admin", action = "ListProducts" }
+                );
 
                 routes.MapRoute(
                    name: "AdminProducts",
                    template: "Admin/Products/{id?}",
-                   defaults: new { controller = "Admin", action = "ProductEdit" }
+                   defaults: new { controller = "Admin", action = "EditProduct" }
                   );
 
 

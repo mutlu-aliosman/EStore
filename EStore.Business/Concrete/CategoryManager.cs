@@ -16,12 +16,12 @@ namespace EStore.Business.Concrete
         }
         public void Create(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryDal.Create(entity);
         }
 
         public void Delete(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryDal.Delete(entity);
         }
 
         public List<Category> GetAll()
@@ -29,9 +29,14 @@ namespace EStore.Business.Concrete
             return _categoryDal.GetAll();
         }
 
+        public Category GetById(int id)
+        {
+            return _categoryDal.GetById(id);
+        }
+
         public void Update(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(entity);
         }
     }
 }
