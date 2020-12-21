@@ -1,0 +1,29 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br /><br />
+<h1>Ürün Oluştur</h1>
+<form asp-controller="Admin" asp-action="CreateProduct" method="post">
+    <div class="form-group row">
+        <label asp-for="Name">Ürün Adı</label>
+        <input asp-for="Name" value="" class="form-control">
+    </div>
+    <div class="form-group row">
+        <label asp-for="ImageUrl">Ürün Resmi</label>
+        <input asp-for="ImageUrl" value="" class="form-control">
+    </div>
+    <div class="form-group row">
+        <label asp-for="Price">Ürün Fiyatı</label>
+        <input asp-for="Price" value="" class="form-control">
+    </div>
+    <div class="form-group row">
+        <label asp-for="Description">Ürün Açıklaması</label>
+        <textarea id="editor" asp-for="Description" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary bg-dark">Kaydet</button>
+</form>
+
+

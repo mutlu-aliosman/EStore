@@ -36,6 +36,7 @@ namespace EStore.Business.Concrete
         {
             return _productDal.GetById(id);
         }
+
         public Product GetProductDetails(int id)
         {
             return _productDal.GetProductDetails(id);

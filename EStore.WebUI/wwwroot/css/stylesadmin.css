@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
 * Start Bootstrap - SB Admin v6.0.2 (https://startbootstrap.com/template/sb-admin)
 * Copyright 2013-2020 Start Bootstrap
@@ -545,7 +545,7 @@ pre code {
 .container-lg,
 .container-md,
 .container-sm {
-  width: 100%;
+  width: 50%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   margin-right: auto;
