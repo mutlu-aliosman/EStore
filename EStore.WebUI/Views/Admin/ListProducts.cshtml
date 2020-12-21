@@ -1,10 +1,10 @@
 ﻿@model ProductListModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ListProducts";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Eklenen Ürünler</h1>
+<h1>Ürünler</h1>
 <hr />
 
 @if (Model.Products.Count() > 0)
@@ -32,7 +32,7 @@
                     <td>@item.Price</td>
                     <td>
                         <a class="btn btn-primary btn-sm mr-2" href="/admin/products/@item.Id">Düzenle</a>
-                        <form action="/Admin/ProductDelete" method="post" style="display:inline;">
+                        <form action="/Admin/DeleteProduct" method="post" style="display:inline;">
                             <input type="hidden" name="ProductId" value="@item.Id" />
                             <button type="submit" class="btn btn-danger btn-sm">Sil</button>
                         </form>

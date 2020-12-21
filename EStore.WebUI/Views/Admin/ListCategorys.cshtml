@@ -1,0 +1,40 @@
+﻿@model CategoryListModel
+@{
+    ViewData["Title"] = "ListCategorys";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kategoriler</h1>
+<hr />
+
+@if (Model.Categories.Count() > 0)
+{
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td style="width:30px;">No</td>
+                <td style="width:100px;">Kategori Adı</td>
+                <td style="width:150px;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Categories)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                <td>
+                        <a class="btn btn-primary btn-sm mr-2" href="/admin/EditCategory/@item.Id">Düzenle</a>
+                        <form action="/Admin/DeleteCategory" method="post" style="display:inline;">
+                            <input type="hidden" name="categoryid" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
