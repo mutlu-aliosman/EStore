@@ -38,21 +38,30 @@ namespace EStore.WebUI.Controllers
         [HttpGet]
         public IActionResult CreateProduct()
         {
-            return View();
+            return View(new ProductModel());
         }
         [HttpPost]
         public IActionResult CreateProduct(ProductModel model)
         {
-            var entity = new Product()
+            if(ModelState.IsValid)
             {
-                Name = model.Name,
-                Price = model.Price,
-                ImageUrl = model.ImageUrl,
-                Description = model.Description
+                var entity = new Product()
+                {
+                    Name = model.Name,
+                    Price = model.Price,
+                    ImageUrl = model.ImageUrl,
+                    Description = model.Description
 
-            };
-            _productService.Create(entity);
-            return RedirectToAction("ListProducts");
+                };
+                if (_productService.Create(entity))
+                {
+                    return RedirectToAction("ListProducts");
+                }
+                ViewBag.Error = _productService.ErorMesaage;
+                return View(model);
+                
+            }
+            return View(model);
         }
         public IActionResult EditProduct(int? id)
         {
