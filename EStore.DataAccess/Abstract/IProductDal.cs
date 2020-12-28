@@ -11,5 +11,7 @@ namespace EStore.DataAccess.Abstract
     {
         List<Product> GetProductsByCategory(string category,int page,int pageSize);
         Product GetProductDetails(int id);
+        Product GetByIdWithCategorys(int id);
+        void Update(Product entity, int[] categoryId);
     }
 }

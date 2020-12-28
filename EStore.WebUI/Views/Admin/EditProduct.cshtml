@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Ürün Düzenle</h1>
+<h1><center>Ürün Düzenle</center></h1>
 <form asp-controller="Admin" asp-action="EditProduct" method="post">
     <input type="hidden" name="Id" value="@Model.Id" />
     <div class="form-group row">
@@ -24,4 +24,18 @@
         <textarea id="editor" asp-for="Description" class="form-control">@Model.Description</textarea>
     </div>
     <button type="submit" class="btn btn-primary bg-dark">Kaydet</button>
+        <hr />
+        <h4><center>Ürün Kategorisi</center></h4>
+        @foreach (var item in (List<Category>)ViewBag.Categorys)
+        {
+<center>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" 
+         name="categoryId"
+         value="@item.Id"
+         class="custom-control-input" id="category@(item.Id)" @(Model.SelectCategorys.Any(i => i.Id == item.Id) ? "checked" : "")>
+        <label class="custom-control-label" for="category@(item.Id)">@item.Name</label>
+    </div>
+</center>
+        }
 </form>

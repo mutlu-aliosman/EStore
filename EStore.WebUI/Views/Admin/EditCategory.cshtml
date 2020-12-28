@@ -4,12 +4,58 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Kategori Düzenle</h1>
-<form asp-controller="Admin" asp-action="EditCategory" method="post">
+<h1><center>Kategori Düzenle</center></h1>
+<form asp-controller="Admin" asp-action="DeleteCategory" method="post">
     <input type="hidden" name="Id" value="@Model.Id" />
     <div class="form-group row">
         <label asp-for="Name">Kategori Adı</label>
         <input asp-for="Name" value="@Model.Name" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary bg-dark">Kaydet</button>
+    <hr />
+    <h4><center>Kategoriye Dahil Olan Ürünler</center></h4>
 </form>
+@if (Model.Products.Count() > 0)
+{
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td style="width:30px;">No</td>
+                <td style="width:100px;">Resim</td>
+                <td>Adı</td>
+                <td style="width:12px;">Fiyatı</td>
+                <td style="width:150px;"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <img src="~/img/@item.ImageUrl" width="80" />
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm mr-2" href="/admin/products/@item.Id">Düzenle</a>
+                        <form action="/Admin/DeleteFromCategory" method="post" style="display:inline;">
+                            <input type="hidden" name="ProductId" value="@item.Id" />
+                            <input type="hidden" name="CateId" value="@Model.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        <h4>Eklenen Ürün Yok</h4>
+    </div>
+}
+

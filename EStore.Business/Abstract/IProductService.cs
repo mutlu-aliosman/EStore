@@ -15,5 +15,7 @@ namespace EStore.Business.Abstract
         void Delete(Product entity);
         Product GetProductDetails(int id);
         object GetProductsByCategory(string category);
+        Product GetByIdWithCategorys(int id);
+        void Update(Product entity, int[] categoryId);
     }
 }
