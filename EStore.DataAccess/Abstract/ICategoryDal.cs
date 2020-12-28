@@ -7,8 +7,9 @@ using System.Text;
 
 namespace EStore.DataAccess.Abstract
 {
-   public interface ICategoryDal:IRepository<Category>
+    public interface ICategoryDal : IRepository<Category>
     {
-     
+        Category GetByWithProducts(int id);
+        void DeleteFromCategory(int cateId, int productId);
     }
 }

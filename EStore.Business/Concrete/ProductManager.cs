@@ -5,6 +5,7 @@ using EStore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
 namespace EStore.Business.Concrete
@@ -37,6 +38,11 @@ namespace EStore.Business.Concrete
             return _productDal.GetById(id);
         }
 
+        public Product GetByIdWithCategorys(int id)
+        {
+            return _productDal.GetByIdWithCategorys(id);
+        }
+
         public Product GetProductDetails(int id)
         {
             return _productDal.GetProductDetails(id);
@@ -55,6 +61,11 @@ namespace EStore.Business.Concrete
         public void Update(Product entity)
         {
             _productDal.Update(entity);
+        }
+
+        public void Update(Product entity, int[] categoryId)
+        {
+            _productDal.Update(entity, categoryId);
         }
     }
 }

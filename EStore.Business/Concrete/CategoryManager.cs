@@ -24,6 +24,11 @@ namespace EStore.Business.Concrete
             _categoryDal.Delete(entity);
         }
 
+        public void DeleteFromCategory(int cateId, int productId)
+        {
+            _categoryDal.DeleteFromCategory(cateId, productId);
+        }
+
         public List<Category> GetAll()
         {
             return _categoryDal.GetAll();
@@ -32,6 +37,11 @@ namespace EStore.Business.Concrete
         public Category GetById(int id)
         {
             return _categoryDal.GetById(id);
+        }
+
+        public Category GetByWithProducts(int id)
+        {
+            return _categoryDal.GetByWithProducts(id);
         }
 
         public void Update(Category entity)
