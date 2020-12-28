@@ -5,6 +5,7 @@ using EStore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
@@ -18,9 +19,17 @@ namespace EStore.Business.Concrete
         {
             _productDal = productDal;
         }
-        public void Create(Product entity)
+
+        public string ErorMesaage { get; set; }
+
+        public bool Create(Product entity)
         {
-            _productDal.Create(entity);
+            if(Validate(entity))
+            {
+                _productDal.Create(entity);
+                return true;
+            }
+            return false;
         }
 
         public void Delete(Product entity)
@@ -66,6 +75,18 @@ namespace EStore.Business.Concrete
         public void Update(Product entity, int[] categoryId)
         {
             _productDal.Update(entity, categoryId);
+        }
+
+        public bool Validate(Product entity)
+        {
+            var IsValid = true;
+            if(string.IsNullOrEmpty(entity.Name))
+            {
+                ErorMesaage += "Lütfen ürün ismi giriniz.";
+                IsValid = false;
+            }
+
+            return IsValid;
         }
     }
 }
