@@ -7,11 +7,16 @@
 {
     <script src="~/modules/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/modules/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+
 }
 <h1><center>Ürün Ekle</center></h1>
 @if (ViewBag.Error != null)
 {
-<span class="text-danger">@ViewBag.Error</span>
+    <span class="text-danger">@ViewBag.Error</span>
 }
 <form asp-controller="Admin" asp-action="CreateProduct" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
@@ -21,9 +26,10 @@
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group row">
-        <label asp-for="ImageUrl">Ürün Resmi</label>
-        <input asp-for="ImageUrl" value="@Model.ImageUrl" class="form-control">
-        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        <label asp-for="ImageUrl" class="col-md-2 col-form-label"></label>
+        <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
+        <img src="~/img/@Model.ImageUrl" width="80" />
+        <input type="file" name="file" value="" />
     </div>
     <div class="form-group row">
         <label asp-for="Price">Ürün Fiyatı</label>
@@ -31,7 +37,7 @@
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
     <div class="form-group row">
-        <label asp-for="Description">Ürün Açıklaması</label>
+        <label asp-for="Description">Ürün Açıklaması</label><hr />
         <textarea id="editor" asp-for="Description" class="form-control"> value="@Model.Description" </textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using EStore.Business.Abstract;
 using EStore.Entities;
 using EStore.WebUI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -41,7 +43,7 @@ namespace EStore.WebUI.Controllers
             return View(new ProductModel());
         }
         [HttpPost]
-        public IActionResult CreateProduct(ProductModel model)
+        public async Task<IActionResult> CreateProduct(ProductModel model,IFormFile file)
         {
             if(ModelState.IsValid)
             {
@@ -49,10 +51,18 @@ namespace EStore.WebUI.Controllers
                 {
                     Name = model.Name,
                     Price = model.Price,
-                    ImageUrl = model.ImageUrl,
                     Description = model.Description
-
                 };
+                if (file != null)
+                {
+                    entity.ImageUrl = file.FileName;
+
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", file.FileName);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                }
                 if (_productService.Create(entity))
                 {
                     return RedirectToAction("ListProducts");
@@ -88,8 +98,10 @@ namespace EStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditProduct(ProductModel model,int[] categoryId)
+        public async Task<IActionResult> EditProduct(ProductModel model,int[] categoryId,IFormFile file)
         {
+            if(ModelState.IsValid)
+            { 
             var entity = _productService.GetByIdWithCategorys(model.Id);
             if (entity == null)
             {
@@ -97,11 +109,23 @@ namespace EStore.WebUI.Controllers
             }
             entity.Name = model.Name;
             entity.Description = model.Description;
-            entity.ImageUrl = model.ImageUrl;
             entity.Price = model.Price;
+                if(file!=null)
+                {
+                    entity.ImageUrl = file.FileName;
+
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", file.FileName);
+                    using(var stream=new FileStream(path,FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                }
             _productService.Update(entity,categoryId);
 
             return RedirectToAction("ListProducts");
+            }
+            ViewBag.Categori = _categoryService.GetAll();
+            return View(model);
         }
         [HttpPost]
         public IActionResult DeleteProduct(int ProductId)
