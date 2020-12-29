@@ -58,8 +58,8 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Kullanıcı Hesabı</a>
                             <div class="dropdown-menu">
-                                <a asp-controller="EStore" asp-action="GirisYap" class="nav-item nav-link">Giriş Yap</a>
-                                <a asp-controller="EStore" asp-action="UyeOl" class="nav-item nav-link">Üye Ol</a>
+                                <a asp-controller="Account" asp-action="Login" class="nav-item nav-link">Giriş Yap</a>
+                                <a asp-controller="Account" asp-action="Register" class="nav-item nav-link">Üye Ol</a>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
         </div>
     </div>
     <!-- Bottom Bar End -->
-  @RenderBody()
+    @RenderBody()
     <!-- Review Start -->
     <div class="review">
         <div class="container-fluid">
@@ -251,7 +251,7 @@
                 </div>
 
                 <div class="col-md-6 template-by">
-                    
+
                 </div>
             </div>
         </div>
@@ -268,5 +268,6 @@
 
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
+    @RenderSection("vall", false)
 </body>
 </html>
