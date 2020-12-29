@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using EStore.Business.Abstract;
 using EStore.Entities;
 using EStore.WebUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace EStore.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         #region Injection Process
